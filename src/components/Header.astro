@@ -9,7 +9,7 @@ const { active="none" } = Astro.props;
   <div class="header-nav">
     {
       nav.map((item: any) => {
-        const itemClass = `nav-item ${item.link}${active === item.link ? ' active' : ''}`;
+        const itemClass = `nav-item ${item.link}${active === item.name.toLowerCase() ? ' active' : ''}`;
         return (
           <a class={itemClass} href={item.link}>
             <div class="nav-item-name">{item.name}</div>

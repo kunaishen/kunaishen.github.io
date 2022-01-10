@@ -2,8 +2,8 @@
   "title":"Aishen | Portfolio",
   "description":"My personal portfolio",
   "nav": [
-    { "name": "Home", "link": "/", "description":"My default home firefox site."},
-    { "name": "About", "link": "about", "description": "Some stuff about me."},
-    { "name": "Other", "link": "other", "description": "Other stuff I have in this website."}
+    { "name": "Home", "link": "/portfolio", "description":"My default home firefox site."},
+    { "name": "About", "link": "/portfolio/about/", "description": "Some stuff about me."},
+    { "name": "Other", "link": "/portfolio/other/", "description": "Other stuff I have in this website."}
   ]
 }
