@@ -1,0 +1,96 @@
+---
+import { title, nav } from '../data/config.json'; 
+
+const { active="none" } = Astro.props;
+---
+
+<header>
+  <a class="header-title" href="/">{title}</a>
+  <div class="header-nav">
+    {
+      nav.map((item: any) => {
+        const itemClass = `nav-item ${item.link}${active === item.link ? ' active' : ''}`;
+        return (
+          <a class={itemClass} href={item.link}>
+            <div class="nav-item-name">{item.name}</div>
+            <div class="nav-item-description">{item.description}</div>
+          </a>
+        );
+      })
+    }
+  </div>
+</header>
+<style>
+  header {
+    position: sticky;
+    background-color: var(--darker-background-color);
+    color: var(--text-color);
+    height: 3.5rem;
+    width: 100%;
+    top: 0;
+  }
+
+  header > * {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  header > .header-title {
+    position: absolute;
+    left: 5%;
+    color: var(--text-color);
+    font-weight: bolder;
+    font-size: 1.5rem;
+    text-decoration: none;
+  }
+
+  header > .header-nav {
+    position: absolute;
+    right: 7%;
+
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  header > .header-nav > .nav-item {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 0.7rem;
+    border-radius: 0.1rem;
+    transition: all 200ms ease-in-out;
+  }
+
+  header > .header-nav > .nav-item.active {
+    background-color: var(--background-color);
+    pointer-events: none;
+  }
+
+  header > .header-nav > .nav-item:hover:not(.active) {
+    background-color: var(--text-color);
+    color: var(--darker-background-color);
+  }
+
+  header > .header-nav > .nav-item > .nav-item-description {
+    opacity: 0;
+    position: absolute;
+    bottom: -50%;
+    white-space: nowrap;
+    font-size: .7rem;
+    transform: translate(-35%, -20%);
+  }
+
+  header > .header-nav > .nav-item:hover > .nav-item-description {
+    opacity: 1;
+    color: var(--text-color);
+  }
+
+  @media ( max-width: 900px ) {
+    header > .header-title {
+      opacity: 0;
+      pointer-events: none;
+    }
+    header > .header-nav > .nav-item:hover > .nav-item-description {
+      opacity: 0;
+    }
+  }
+</style>
