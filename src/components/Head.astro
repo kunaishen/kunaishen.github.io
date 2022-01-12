@@ -1,5 +1,5 @@
 ---
-import { title, description, styles, chosenStyle } from "../data/config.json";
+import { description, styles, chosenStyle, name } from "../data/config.json";
 const userChosenStyle = null; // TODO!!! make themes for users
 const style = styles[userChosenStyle ?? chosenStyle];
 ---
@@ -7,7 +7,7 @@ const style = styles[userChosenStyle ?? chosenStyle];
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="Description" content={description}>
-<title>{title}</title>
+<title>{name}</title>
 <link rel="stylesheet" type="text/css" href={Astro.resolve("../styles/global.css")}>
 <style>
   :root {
