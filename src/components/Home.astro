@@ -9,22 +9,33 @@ function getBackground() {
   const backgroundName = backgrounds[Math.floor(Math.random() * length)];
   return `./assets/background/${backgroundName}`;
 }
-
-const overlay = `linear-gradient(rgb(0, 0, 0, 0.6), rgb(0, 0, 0, 0.9) )`;
-const pos = `width:100vw;height:100vh;position:absolute;top:0;z-index:-1;`;
-const style = `${pos}background:${overlay},url('${getBackground()}');background-position:center;`;
+const styles = [
+  'position:absolute;top:0;z-index:-1;',
+  'width:100vw;height:100vh;',
+  'filter:blur(1px);-webkit-filter: blur(1px);',
+  `background:linear-gradient(rgb(0,0,0,0.6),rgb(0,0,0,0.9) ),url('${getBackground()}');`,
+  'background-position:center;background-size:cover;'
+];
 ---
-<div class="main" style={style}>
-  <div class="greeting-and-time unselectable">
-    <span class="time"></span>
-    <br>
-    <span class="greeting"></span>
-  </div>
-  <div class="date unselectable"></div>
+<div class="main" style={styles.join('')}></div>
+<div class="greeting-and-time unselectable">
+  <span class="time"></span>
+  <br>
+  <span class="greeting"></span>
 </div>
-
+<div class="date unselectable"></div>
+<div class="list-container">
+  <div class="list-item">
+    <a href="https://gmail.com"><img src="./assets/icons/gmail.png" alt="gmail"></a>
+  </div>
+  <div class="list-item">
+    <a href="https://discord.com/developers/"><img src="./assets/icons/discord.png" alt="discord"></a>
+  </div>
+  <div class="list-item">
+    <a href="https://github.com"><img src="./assets/icons/github.png" alt="github"></a>
+  </div>
+</div>
 <script type="module">
-
 function setElementText(query, value) {
   const element = document.querySelector(query);
   if (value !== element.textContent) element.textContent = value;
@@ -38,10 +49,10 @@ function updateTime() {
   const meridiem = hour24 > 12 ? 'PM' : 'AM';
   let subGreeting;
   switch(true) {
-    case hour24 >= 20: subGreeting = 'night'; break;
-    case hour24 >= 17: subGreeting = 'evening'; break;
-    case hour24 >= 13: subGreeting = 'afternoon'; break;
-    default: subGreeting = 'morning';
+    case hour24 >= 20: subGreeting = 'Night'; break;
+    case hour24 >= 17: subGreeting = 'Evening'; break;
+    case hour24 >= 13: subGreeting = 'Afternoon'; break;
+    default: subGreeting = 'Morning';
   }
   
   const greeting = `Good ${subGreeting}!`;
@@ -57,33 +68,64 @@ setInterval(updateTime, 1000);
 </script>
 
 <style>
+  * { overflow-y: hidden }
   .greeting-and-time {
-    width: 100%;
     text-align: center;
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 200ms ease-in-out;
+  }
+  .greeting-and-time:hover {
+    transform: translate(-50%, -45%);
   }
   .time {
     font-size: 5rem;
+    font-family: "Lucida Console", "Courier New", monospace;
+    text-decoration: underline;
   }
   .greeting {
-    font-size: 3rem;
+    font-size: 2.7rem;
   }
   .date {
     position: absolute;
     bottom: .7rem;
     right: 1rem;
-    transform: translate(0, 5px);
   }
 
-  .unselectable {
-    user-select: none;
-    -moz-user-select: none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    -o-user-select: none;
+  .list-container {
+    background-image: linear-gradient(var(--background-color) 5%, var(--darker-background-color));
+    position: absolute;
+    width: 25vw;
+    height: 15vh;
+    border-radius: .5rem;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem 0 1rem;
   }
+  .list-container > .list-item {
+    flex-grow: 1;
+  }
+
+  .list-container > .list-item > a {
+    display: flex;
+    justify-content: center;
+  }
+  .list-container > .list-item > a > img {
+    width: 4rem;
+    height: 4rem;
+    transition: all 200ms ease-in-out;
+  }
+
+  .list-container > .list-item > a:hover > img {
+    transform: scale(105%);
+  }
+
   @media ( max-width: 900px ) {
     .time {
       font-size: 2.5rem;
@@ -93,6 +135,10 @@ setInterval(updateTime, 1000);
     }
     .date {
       font-size: 0.8rem;
+    }
+    .list-container {
+      padding: 0 .2rem 0 .2rem;
+      width: 60vw;
     }
   }
 </style>
