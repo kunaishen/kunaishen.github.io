@@ -87,11 +87,12 @@ setInterval(updateTime, 1000);
   }
   .greeting {
     font-size: 2.7rem;
+    white-space: nowrap;
   }
   .date {
     position: absolute;
     bottom: .7rem;
-    right: 1rem;
+    right: .7rem;
   }
 
   .list-container {
@@ -139,6 +140,11 @@ setInterval(updateTime, 1000);
     .list-container {
       padding: 0 .2rem 0 .2rem;
       width: 60vw;
+      height: 13vh;
+    }
+    .list-container > .list-item > a > img {
+      width: 3rem;
+      height: 3rem;
     }
   }
 </style>
