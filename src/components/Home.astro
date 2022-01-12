@@ -1,0 +1,98 @@
+---
+// Code adapted from https://github.com/jo3-l/jo3-l.github.io/ retrieved date Jan 2022
+// MIT License
+// Copyright (c) 2020 Joe L.
+
+import { backgrounds } from '../data/config.json';
+function getBackground() {
+  const length = backgrounds.length;
+  const backgroundName = backgrounds[Math.floor(Math.random() * length)];
+  return `./assets/background/${backgroundName}`;
+}
+
+const overlay = `linear-gradient(rgb(0, 0, 0, 0.6), rgb(0, 0, 0, 0.9) )`;
+const pos = `width:100vw;height:100vh;position:absolute;top:0;z-index:-1;`;
+const style = `${pos}background:${overlay},url('${getBackground()}');background-position:center;`;
+---
+<div class="main" style={style}>
+  <div class="greeting-and-time unselectable">
+    <span class="time"></span>
+    <br>
+    <span class="greeting"></span>
+  </div>
+  <div class="date unselectable"></div>
+</div>
+
+<script type="module">
+
+function setElementText(query, value) {
+  const element = document.querySelector(query);
+  if (value !== element.textContent) element.textContent = value;
+}
+
+function updateTime() {
+  const now = new Date();
+  const hour24 = now.getHours();
+  const hour = hour24 > 12 ? hour24 - 12 : hour24;
+  const minute = String(now.getMinutes());
+  const meridiem = hour24 > 12 ? 'PM' : 'AM';
+  let subGreeting;
+  switch(true) {
+    case hour24 >= 20: subGreeting = 'night'; break;
+    case hour24 >= 17: subGreeting = 'evening'; break;
+    case hour24 >= 13: subGreeting = 'afternoon'; break;
+    default: subGreeting = 'morning';
+  }
+  
+  const greeting = `Good ${subGreeting}!`;
+  setElementText('.greeting-and-time>.time', `${hour}:${minute.padStart(2, '0')} ${meridiem}`);
+  setElementText('.greeting-and-time>.greeting', greeting);
+  setElementText('.date', now.toDateString());
+}
+
+updateTime();
+setInterval(updateTime, 1000);
+
+
+</script>
+
+<style>
+  .greeting-and-time {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .time {
+    font-size: 5rem;
+  }
+  .greeting {
+    font-size: 3rem;
+  }
+  .date {
+    position: absolute;
+    bottom: .7rem;
+    right: 1rem;
+    transform: translate(0, 5px);
+  }
+
+  .unselectable {
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+  }
+  @media ( max-width: 900px ) {
+    .time {
+      font-size: 2.5rem;
+    }
+    .greeting {
+      font-size: 1.5rem;
+    }
+    .date {
+      font-size: 0.8rem;
+    }
+  }
+</style>
