@@ -1,11 +1,11 @@
 ---
-import { title, nav } from '../data/config.json'; 
+import { title, nav } from "../data/config.json"; 
 
 const { active="none" } = Astro.props;
 ---
 
 <header>
-  <a class="header-title" href="/">{title}</a>
+  <a class="header-title" href={nav.find((i: any) => i.name === "Home").link}>{title}</a>
   <div class="header-nav">
     {
       nav.map((item: any) => {
