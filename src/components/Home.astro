@@ -23,7 +23,9 @@ const styles = [
   <br>
   <span class="greeting"></span>
 </div>
-<div class="date unselectable"></div>
+<a href="https://github.com/kunaishen/kunaishen.github.io/" class="source-code unselectable">
+  Source Code
+</a>
 <div class="list-container">
   <div class="list-item">
     <a href="https://gmail.com"><img src="./assets/icons/gmail.png" alt="gmail"></a>
@@ -58,7 +60,6 @@ function updateTime() {
   const greeting = `Good ${subGreeting}!`;
   setElementText('.greeting-and-time>.time', `${hour}:${minute.padStart(2, '0')} ${meridiem}`);
   setElementText('.greeting-and-time>.greeting', greeting);
-  setElementText('.date', now.toDateString());
 }
 
 updateTime();
@@ -89,8 +90,10 @@ setInterval(updateTime, 1000);
     font-size: 2.7rem;
     white-space: nowrap;
   }
-  .date {
+  .source-code {
     position: absolute;
+    text-decoration: none;
+    color: gray;
     bottom: .7rem;
     right: .7rem;
   }
