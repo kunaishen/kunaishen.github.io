@@ -7,14 +7,6 @@
     { "name": "About", "link": "/about/", "description": "Some stuff about me."},
     { "name": "Other", "link": "/other/", "description": "Other stuff I have in this website."}
   ],
-  "styles": [
-    {
-      "--darker-background-color": "#0D1011",
-      "--background-color": "#22222b",
-      "--text-color": "#fff"
-    }
-  ],
-  "chosenStyle": 0,
   "backgrounds": [
     "if_there_was_an_endpoint.jpg",
     "clouds.jpg",
