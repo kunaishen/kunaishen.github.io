@@ -1,0 +1,32 @@
+---
+import { Markdown } from 'astro/components';
+
+const content =  await fetch('https://raw.githubusercontent.com/kunaishen/kunaishen/main/README.md').then(res => res.text());;
+---
+<div class="wrapper">
+  <Markdown content={content} class="markdown"/>
+  <div class="stuff">
+    <h2>More stuff.</h2>
+    <p>
+    I've been programming for more than a year now, I'm a more backend developer <i>(as you can see this front end looks shit)</i>. Other than programming I do nothing, <i>smh except for doing hygiene ofcourse.</i>. Also coding taught me how to dissociate. Well, it is fun!, if you love suffering you should try it too. I like being minimal. I hate web browsers, they eat so much RAM <i>reee</i>. I spent most of my coding session refactoring existing code rather than adding features. I rather make an algorithm for five hours to solve a problem rather than doing it by brute force for one hour. I'm unbased, also my music taste is unbased.
+    </p>
+    <br />
+    <p><b>Also!! I'm finally a Linux user, <i>btw</i>.</b></p>
+  </div>
+  <img src="https://user-images.githubusercontent.com/75763715/146131278-0e293420-2cf7-4726-ab3a-e0760d99dc73.png">
+</div>
+<style>
+  .wrapper {
+    padding: 2rem 10vw 2rem 10vw;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+  }
+  .stuff {
+    text-align: center;
+  }
+  .markdown {
+    line-height: 1rem;
+  }
+</style>
