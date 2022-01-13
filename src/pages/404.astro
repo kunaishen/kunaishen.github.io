@@ -1,0 +1,30 @@
+---
+import Head from '../components/Head.astro';
+import Header from '../components/Header.astro';
+---
+<html lang="en">
+	<head>
+		<Head />
+	</head>
+  <style>
+    .wrapper {
+      padding: 2rem 10vw 2rem 10vw;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      justify-content: center;
+    }
+    .wrapper > * {
+      text-align: center;
+    }
+  </style>
+<body>
+	<main>
+		<div class="wrapper">
+      <h1>Oh no! 404 Not Found</h1>
+      <p>Hmm, this is awkward. There is nothing in here, anyway...</p>
+      <img src="./assets/icons/top_secret_image_dont_open.png" alt="yes">
+    </div>
+	</main>
+</body>
+</html>
