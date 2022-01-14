@@ -1,159 +1,269 @@
 ---
-// Code adapted from https://github.com/jo3-l/jo3-l.github.io/ retrieved date Jan 2022
-// MIT License
-// Copyright (c) 2020 Joe L.
+import { name } from '../data/config.json';
+const { PUBLIC_API_WEATHER_KEY, PUBLIC_CITY } = import.meta.env;
+const fetchedWeather = await fetch(
+  `https://api.openweathermap.org/data/2.5/weather?q=${PUBLIC_CITY}&APPID=${PUBLIC_API_WEATHER_KEY}&units=metric`
+);
+const weather = await fetchedWeather.json();
 
-import { backgrounds } from '../data/config.json';
-function getBackground() {
-  const length = backgrounds.length;
-  const backgroundName = backgrounds[Math.floor(Math.random() * length)];
-  return `./assets/background/${backgroundName}`;
-}
-const styles = [
-  'position:absolute;top:0;z-index:-1;',
-  'width:100vw;height:100vh;',
-  'filter:blur(1px);-webkit-filter: blur(1px);',
-  `background:linear-gradient(rgb(0,0,0,0.6),rgb(0,0,0,0.9) ),url('${getBackground()}');`,
-  'background-position:center;background-size:cover;'
-];
+const fetchedQuote = await fetch("https://api.quotable.io/random");
+const quote = await fetchedQuote.json();
 ---
-<div class="main" style={styles.join('')}></div>
-<div class="greeting-and-time unselectable">
-  <span class="time"></span>
-  <br>
-  <span class="greeting"></span>
+<div class="wrapper">
+  <div class="grid">
+    <div class="profile unselectable">
+      <div class="icon">
+        <img src="./assets/icons/avatar.png" alt="avatar">
+      </div>
+      <div class="text">Good Day! <b>{name}</b>.</div>
+    </div>
+    <div class="weather ignore-default ignore-hover">
+      <div class="status unselectable">
+        <div class="desc">{weather?.weather[0]?.main}</div>
+      </div>
+      <div class="city unselectable">
+        <div class="desc">{weather?.name}</div>
+      </div>
+      <div class="temp">
+        <div class="desc">{Math.floor(weather.main.temp)}&deg;C</div>
+        <div class="sub">feels like {weather.main.feels_like}&deg;C</div>
+      </div>
+    </div>
+    <div class="time">
+      <div class="time-string">{
+        (new Date())
+          .toLocaleTimeString()
+          .toUpperCase()
+          .split(":")
+          .map((v, i) => `<span style='color:${['#284F8F', '#B22B27', '#EFD033'][i]};'>${v}</span>`)
+          .join(" : ")
+      }</div>
+    </div>
+    <div class="quote ignore-default">
+      <div class="content">"{quote.content}"</div>
+      <div class="author">- {quote.author}</div>
+    </div>
+    <div class="shortcuts ignore-default ignore-hover">
+      <a href="https://discord.com/developers" class="item"><img src="/assets/icons/discord.png"></a>
+      <a href="https://gmail.com" class="item"><img src="/assets/icons/gmail.png"></a>
+      <a href="https://facebook.com" class="item"><img src="/assets/icons/facebook.png"></a>
+      <a href="https://github.com" class="item"><img src="/assets/icons/github.png"></a>
+      <a href="https://reddit.com" class="item"><img src="/assets/icons/reddit.png"></a>
+    </div>
+  </div>
 </div>
-<a href="https://github.com/kunaishen/kunaishen.github.io/" class="source-code unselectable">
-  Source Code
-</a>
-<div class="list-container">
-  <div class="list-item">
-    <a href="https://gmail.com"><img src="./assets/icons/gmail.png" alt="gmail"></a>
-  </div>
-  <div class="list-item">
-    <a href="https://discord.com/developers/"><img src="./assets/icons/discord.png" alt="discord"></a>
-  </div>
-  <div class="list-item">
-    <a href="https://github.com"><img src="./assets/icons/github.png" alt="github"></a>
-  </div>
-</div>
-<script type="module">
-function setElementText(query, value) {
-  const element = document.querySelector(query);
-  if (value !== element.textContent) element.textContent = value;
-}
-
-function updateTime() {
-  const now = new Date();
-  const hour24 = now.getHours();
-  const hour = hour24 > 12 ? hour24 - 12 : hour24;
-  const minute = String(now.getMinutes());
-  const meridiem = hour24 > 12 ? 'PM' : 'AM';
-  let subGreeting;
-  switch(true) {
-    case hour24 >= 20: subGreeting = 'Night'; break;
-    case hour24 >= 17: subGreeting = 'Evening'; break;
-    case hour24 >= 13: subGreeting = 'Afternoon'; break;
-    default: subGreeting = 'Morning';
-  }
-  
-  const greeting = `Good ${subGreeting}!`;
-  setElementText('.greeting-and-time>.time', `${hour}:${minute.padStart(2, '0')} ${meridiem}`);
-  setElementText('.greeting-and-time>.greeting', greeting);
-}
-
-updateTime();
-setInterval(updateTime, 1000);
-
-
-</script>
-
 <style>
-  * { overflow-y: hidden }
-  .greeting-and-time {
-    text-align: center;
+  .wrapper {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: all 200ms ease-in-out;
-  }
-  .greeting-and-time:hover {
-    transform: translate(-50%, -45%);
-  }
-  .time {
-    font-size: 5rem;
-    font-family: "Lucida Console", "Courier New", monospace;
-    text-decoration: underline;
-    white-space: nowrap;
-  }
-  .greeting {
-    font-size: 2.7rem;
-    white-space: nowrap;
-  }
-  .source-code {
-    position: absolute;
-    text-decoration: none;
-    color: gray;
-    bottom: .7rem;
-    right: .7rem;
-    transition: all 300ms ease-in-out;
-  }
-
-  .source-code:hover {
-    color: #fff;
-  }
-
-  .list-container {
-    background-image: linear-gradient(var(--background-color) 5%, var(--darker-background-color));
-    position: absolute;
-    width: 25vw;
-    height: 15vh;
-    border-radius: .5rem;
-    bottom: 3rem;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 0;
+    height: calc(100vh - 3.5rem);
+    width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 1rem 0 1rem;
+    padding: 3rem 5rem 3rem 5rem;
   }
-  .list-container > .list-item {
-    flex-grow: 1;
+  .grid {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    gap: .2rem;
+    grid-template-rows: 1.2fr 1.2fr 1.1fr;
+    grid-template-columns: 2fr 1fr 1fr 1fr 2fr;
+    grid-template-areas: 
+      "profile weather weather weather quote"
+      "profile time time time quote"
+      "profile shortcuts shortcuts shortcuts shortcuts";
   }
-
-  .list-container > .list-item > a {
+  .grid > * {
+    border-radius: .3rem;
+    transition: all 100ms ease-in-out;
+  }
+  .grid > *:not(.ignore-default) {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 1.5rem;
     display: flex;
     justify-content: center;
-  }
-  .list-container > .list-item > a > img {
-    width: 4rem;
-    height: 4rem;
-    transition: all 200ms ease-in-out;
+    align-items: center;
+    flex-direction: column;
   }
 
-  .list-container > .list-item > a:hover > img {
-    transform: scale(105%);
+  .grid > *:not(.ignore-hover):hover {
+    margin: .5rem;
+    border-radius: .5rem;
   }
 
-  @media ( max-width: 900px ) {
-    .time {
-      font-size: 2.5rem;
+  .profile {
+    grid-area: profile;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .profile > .icon > img {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+  }
+  .profile > .text {
+    font-size: 1.7rem;
+    white-space: nowrap;
+  }
+  .profile > .text > b {
+    color: #B22B27;
+  }
+
+  .time {
+    grid-area: time;
+  }
+  .time > .time-string {
+    font-size: 2rem;
+    font-family: Verdana, sans-serif;
+  }
+  .quote {
+    grid-area: quote;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 3ch;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .quote > .content {
+    text-align: center;
+  }
+  .quote > .content {
+    font-size: 1.5rem;
+    font-style: italic;
+  }
+  .weather {
+    grid-area: weather;
+    display: grid;
+    justify-content: stretch;
+    align-items: stretch;
+    gap: .2rem;
+    grid-template-areas: 
+      "status temp"
+      "city city";
+  }
+  .weather > * {
+    border-radius: .2rem;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .weather > *:hover {
+    margin: .1rem;
+  }
+
+  .status {
+    grid-area: status;
+    font-family: Arial, Helvetica;
+    font-weight: lighter;
+    font-variant: small-caps;
+    font-size: 0.9rem;
+  }
+  .temp {
+    grid-area: temp;
+  }
+  .temp > .desc {
+    font-size: 1.2rem;
+    font-weight: bolder;
+    color: #284F8F;
+  }
+  .temp > .sub {
+    font-family: cursive;
+    font-size: 0.7rem;
+    font-weight: lighter;
+  }
+  .city {
+    grid-area: city;
+    font-size: 1.5rem;
+    color: #284F8F;
+  }
+  .shortcuts {
+    grid-area: shortcuts;
+    display: flex;
+    gap: .3rem;
+    padding: 0 !important;
+  }
+  .shortcuts > a {
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: .3rem;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 100ms ease-in-out;
+  }
+  .shortcuts > a:hover {
+    margin: .2rem;
+  }
+  .shortcuts > a > img {
+    height: 6rem;
+    width: 6rem;
+  }
+
+  @media screen and (max-width: 900px) {
+    .wrapper {
+      padding: 1rem;
     }
-    .greeting {
-      font-size: 1.5rem;
+    .grid {
+      padding: 0;
+      overflow-y: visible;
+      grid-template-columns: 2fr 2fr 1fr;
+      grid-template-rows: 4fr 2fr 3fr;
+      grid-template-areas: 
+        "profile profile profile"
+        "time time shortcuts"
+        "quote quote shortcuts"
     }
-    .date {
+    .profile > .text {
+      font-size: 1.3rem;
+    }
+    .profile > .icon > img {
+      height: 7rem;
+      width: 7rem;
+    }
+    .time > .time-string {
+      font-size: 1.3rem;
+    }
+    .grid > *:not(.ignore-hover):hover {
+      margin: 0.1rem;
+    }
+    .weather { 
+      display: none;
+    }
+    .quote > .content {
+      font-size: 1rem;
+    }
+    .quote > .author {
       font-size: 0.8rem;
     }
-    .list-container {
-      padding: 0 .2rem 0 .2rem;
-      width: 60vw;
-      height: 13vh;
+    .shortcuts {
+      flex-direction: column;
     }
-    .list-container > .list-item > a > img {
-      width: 3rem;
+    .shortcuts > a > img {
       height: 3rem;
+      width: 3rem;
     }
   }
 </style>
+<script>
+
+  function updateTimeString() {
+    const now = new Date();
+    const timeStringElement = document.querySelector('.time-string');
+    const slice = now.toLocaleTimeString().toUpperCase().split(":");
+    const colors = ['#284F8F', '#B22B27', '#EFD033'];
+
+    timeStringElement.innerHTML = slice
+      .map((v, i) => `<span style='color:${colors[i]};'>${v}</span>`)
+      .join(" : ");
+  }
+  setInterval(updateTimeString, 1000);
+</script>
