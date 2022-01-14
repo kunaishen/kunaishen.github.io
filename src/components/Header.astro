@@ -1,96 +1,75 @@
 ---
-import { title, nav } from "../data/config.json"; 
-
-const { active="none" } = Astro.props;
+/** TODO!! REFACTOR ALL THIS SHIT. */
+import { title } from "../data/config.json"; 
+const { active = "home" } = Astro.props;
 ---
 
 <header class="unselectable">
-  <a class="header-title" href={nav.find((i: any) => i.name === "Home").link}>{title}</a>
-  <div class="header-nav">
-    {
-      nav.map((item: any) => {
-        const itemClass = `nav-item ${item.link}${active === item.name.toLowerCase() ? ' active' : ''}`;
-        return (
-          <a class={itemClass} href={item.link}>
-            <div class="nav-item-name">{item.name}</div>
-            <div class="nav-item-description">{item.description}</div>
-          </a>
-        );
-      })
-    }
+  <div class="title"><h2>{title}</h2></div>
+  <div class="nav">
+    <a href="/" class={active === 'home' ? 'item active' : 'item'}>
+      <div class="item-name">Home</div>
+    </a>
+    <a href="/about" class={active === 'about' ? 'item active' : 'item'}>
+      <div class="item-name">About</div>
+    </a>
+    <a href="/other" class={active === 'other' ? 'item active' : 'item'}>
+      <div class="item-name">Other</div>
+    </a>
   </div>
 </header>
 <style>
   header {
-    position: sticky;
     background-color: var(--darker-background-color);
-    color: var(--text-color);
+    position: absolute;
     height: 3.5rem;
-    width: 100%;
+    width: 100vw;
     top: 0;
+    display: grid;
+    grid-template-areas: "title nav";
   }
 
-  header > * {
-    top: 50%;
-    transform: translateY(-50%);
-  }
-
-  header > .header-title {
-    position: absolute;
-    left: 5%;
-    color: var(--text-color);
-    font-weight: bolder;
-    font-size: 1.5rem;
-    text-decoration: none;
-  }
-
-  header > .header-nav {
-    position: absolute;
-    right: 7%;
+  .title {
     display: flex;
-    gap: 1.5rem;
-    overflow-y: hidden;
+    justify-content: center;
+    align-items: center;
+    padding: .5rem;
   }
 
-  header > .header-nav > .nav-item {
-    color: var(--text-color);
+  .nav {
+    grid-area: nav;
+    display: flex;
+  }
+
+  .item {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
-    padding: 0.7rem;
-    border-radius: 0.1rem;
-    transition: all 200ms ease-in-out;
+    transition: all 50ms ease-in-out;
   }
 
-  header > .header-nav > .nav-item.active {
-    background-color: var(--background-color);
+  .item:hover, .active{
+    border-bottom-right-radius: 1rem;
+    border-bottom-left-radius: .2rem;
+    border-bottom-style: solid;
+    border-bottom-color: var(--text-color);
+  }
+
+  .active {
     pointer-events: none;
+    background-color: var(--background-color);
+    border-bottom-color: var(--background-color);
   }
 
-  header > .header-nav > .nav-item:hover:not(.active) {
-    background-color: var(--text-color);
-    color: var(--darker-background-color);
-  }
-
-  header > .header-nav > .nav-item > .nav-item-description {
-    opacity: 0;
-    position: absolute;
-    bottom: -50%;
-    white-space: nowrap;
-    font-size: .7rem;
-    transform: translate(-35%, -20%);
-  }
-
-  header > .header-nav > .nav-item:hover > .nav-item-description {
-    opacity: 1;
+  .item-name {
     color: var(--text-color);
   }
 
-  @media ( max-width: 900px ) {
-    header > .header-title {
-      opacity: 0;
-      pointer-events: none;
-    }
-    header > .header-nav > .nav-item:hover > .nav-item-description {
-      opacity: 0;
-    }
+  @media screen and (max-width: 900px) {
+    header { grid-template-areas: "nav"; }
+    .title { display: none; };
   }
+
 </style>
