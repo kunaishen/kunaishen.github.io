@@ -2,11 +2,6 @@
   "name": "Aishen",
   "title":"Aishen | Portfolio",
   "description":"My personal portfolio",
-  "nav": [
-    { "name": "Home", "link": "/", "description":"My default home firefox site."},
-    { "name": "About", "link": "/about/", "description": "Some stuff about me."},
-    { "name": "Other", "link": "/other/", "description": "Other stuff I have in this website."}
-  ],
   "backgrounds": [
     "if_there_was_an_endpoint.jpg",
     "clouds.jpg",
