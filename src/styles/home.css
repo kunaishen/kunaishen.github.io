@@ -1,0 +1,136 @@
+.main {
+  width: 100vw;
+  height: calc(100vh - 3.5rem);
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  padding: .3rem;
+}
+
+.grid {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  gap: .3rem;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 2fr 2fr 1fr;
+  grid-template-areas: 
+    "profile time time"
+    "profile quote quote"
+    "shortcuts shortcuts shortcuts";
+}
+
+.grid > * {
+  background-color: none;
+}
+
+.profile { 
+  grid-area: profile;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2ch;
+  border-bottom-right-radius: 1rem;
+  background-color: var(--darker-background-color);
+}
+
+.profile > .image > img {
+  width: 9rem;
+  height: 9rem;
+  border-radius: 50%;
+}
+
+.profile > .text { font-size: 2rem; }
+.profile > .text > b { color: var(--red); text-decoration: underline; }
+
+.time { 
+  grid-area: time;
+  display: flex;
+  gap: .3rem;
+}
+
+.time > * {
+  flex-grow: 1;
+  font-size: 1.7rem;
+  background-color: var(--darker-background-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
+}
+
+.time > .hms {
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+.time > .date {
+  border-bottom-left-radius: 1rem;
+}
+.time > .hms > .hour, .time > .hms > .minute { color: var(--yellow); }
+.time > .hms > .meridiem[data-meridiem="AM"] { color: var(--green); }
+.time > .hms > .meridiem[data-meridiem="PM"] { color: var(--red); }
+.time > .date > .weekday, .time > .date > .month { color: var(--green) }
+.time > .date > .day { color: var(--blue) }
+
+
+.quote { 
+  grid-area: quote; 
+  background-color: var(--darker-background-color);
+  border-bottom-left-radius: 1rem;
+  border-top-left-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2rem 0 2rem;
+  overflow-y: scroll;
+}
+
+.quote > .text { 
+  color: var(--green); 
+  text-align: center; 
+}
+
+.shortcuts { 
+  grid-area: shortcuts; 
+  background-color: var(--darker-background-color);
+  display: flex;
+}
+.shortcuts > .item > img {
+  width: 5rem;
+  height: 5rem;
+}
+
+@media screen and (max-width: 900px) {
+  .grid { 
+    gap: .2rem;
+    grid-template-areas: 
+      "profile profile profile"
+      "time time time"
+      "quote quote quote";
+  }
+  .profile {
+    border-bottom-right-radius: 0;
+  }
+  .profile > .image > img {
+    width: 6rem;
+    height: 6rem;
+  }
+  .profile > .text {
+    font-size: 1.3rem;
+  }
+  .time > .hms {
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 1rem;
+  }
+  .time > .date {
+    border-top-left-radius: 1rem;
+  }
+  .quote { 
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+  }
+  .shortcuts { display: none; }
+}

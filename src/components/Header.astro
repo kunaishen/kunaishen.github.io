@@ -1,9 +1,8 @@
 ---
-/** TODO!! REFACTOR ALL THIS SHIT. */
 import { title } from "../data/config.json"; 
-const { active = "home" } = Astro.props;
+const { active = "none" } = Astro.props;
 ---
-
+<link rel="stylesheet" type="text/css" href={Astro.resolve("../styles/header.css")}>
 <header class="unselectable">
   <div class="title"><h2>{title}</h2></div>
   <div class="nav">
@@ -18,58 +17,3 @@ const { active = "home" } = Astro.props;
     </a>
   </div>
 </header>
-<style>
-  header {
-    background-color: var(--darker-background-color);
-    position: absolute;
-    height: 3.5rem;
-    width: 100vw;
-    top: 0;
-    display: grid;
-    grid-template-areas: "title nav";
-  }
-
-  .title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: .5rem;
-  }
-
-  .nav {
-    grid-area: nav;
-    display: flex;
-  }
-
-  .item {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    transition: all 50ms ease-in-out;
-  }
-
-  .item:hover, .active{
-    border-bottom-right-radius: 1rem;
-    border-bottom-left-radius: .2rem;
-    border-bottom-style: solid;
-    border-bottom-color: var(--text-color);
-  }
-
-  .active {
-    pointer-events: none;
-    background-color: var(--background-color);
-    border-bottom-color: var(--background-color);
-  }
-
-  .item-name {
-    color: var(--text-color);
-  }
-
-  @media screen and (max-width: 900px) {
-    header { grid-template-areas: "nav"; }
-    .title { display: none; };
-  }
-
-</style>
