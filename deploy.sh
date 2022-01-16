@@ -3,10 +3,15 @@
 # abort on errors
 set -e
 
+# remove building cache
+rm -rf dist
+mkdir dist
+
 # build
 npm run build
 
 # navigate into the build output directory
+
 cd dist
 
 # add .nojekyll to bypass GitHub Page's default behavior
