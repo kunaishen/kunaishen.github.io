@@ -1,4 +1,5 @@
 header {
+  z-index: 10;
   background-color: var(--darker-background-color);
   position: absolute;
   height: 3.5rem;
