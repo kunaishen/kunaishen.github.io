@@ -21,7 +21,7 @@ header {
   display: flex;
 }
 
-.item {
+.nav > .item {
   flex: 1;
   display: flex;
   justify-content: center;
@@ -30,21 +30,21 @@ header {
   transition: all 50ms ease-in-out;
 }
 
-.item:hover, .active{
+.nav > .item:hover, .nav > .item.active {
   border-bottom-right-radius: 1rem;
   border-bottom-left-radius: .2rem;
   border-bottom-style: solid;
   border-bottom-color: var(--text-color);
 }
 
-.active {
+.nav > .item.active {
   pointer-events: none;
   background-color: var(--background-color);
   border-bottom-color: var(--background-color);
   border-top-color: var(--darker-background-color);
 }
 
-.item-name {
+.nav > .item > .item-name {
   color: var(--text-color);
 }
 
