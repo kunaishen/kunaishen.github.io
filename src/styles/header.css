@@ -7,6 +7,10 @@ header {
   top: 0;
   display: grid;
   grid-template-areas: "title nav";
+  transition: all 100ms ease-in-out;
+}
+header:hover {
+  height: 3.8rem;
 }
 
 .title {

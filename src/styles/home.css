@@ -1,136 +1,106 @@
-.main {
+.wrapper {
   width: 100vw;
-  height: calc(100vh - 3.5rem);
+  height: 100vh;
   position: absolute;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  padding: .3rem;
+  top: 0;
 }
 
-.grid {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  gap: .3rem;
-  grid-template-columns: 2fr 1fr 1fr;
-  grid-template-rows: 2fr 2fr 1fr;
-  grid-template-areas: 
-    "profile time time"
-    "profile quote quote"
-    "shortcuts shortcuts shortcuts";
-}
-
-.grid > * {
-  background-color: none;
-}
-
-.profile { 
-  grid-area: profile;
+.profile-wrapper {
+  --profile-width: 40rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2ch;
-  border-bottom-right-radius: 1rem;
-  background-color: var(--darker-background-color);
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.profile > .image > img {
-  width: 9rem;
-  height: 9rem;
-  border-radius: 50%;
-}
-
-.profile > .text { font-size: 2rem; }
-.profile > .text > b { color: var(--red); text-decoration: underline; }
-
-.time { 
-  grid-area: time;
-  display: flex;
-  gap: .3rem;
-}
-
-.time > * {
-  flex-grow: 1;
-  font-size: 1.7rem;
-  background-color: var(--darker-background-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: .5rem;
-}
-
-.time > .hms {
-  border-bottom-left-radius: 1rem;
-  border-bottom-right-radius: 1rem;
-}
-
-.time > .date {
-  border-bottom-left-radius: 1rem;
-}
-.time > .hms > .hour, .time > .hms > .minute { color: var(--yellow); }
-.time > .hms > .meridiem[data-meridiem="AM"] { color: var(--green); }
-.time > .hms > .meridiem[data-meridiem="PM"] { color: var(--red); }
-.time > .date > .weekday, .time > .date > .month { color: var(--green) }
-.time > .date > .day { color: var(--blue) }
-
-
-.quote { 
-  grid-area: quote; 
-  background-color: var(--darker-background-color);
-  border-bottom-left-radius: 1rem;
-  border-top-left-radius: 1rem;
+.profile {
+  background-color: var(--light-invisible-darker-background-color);
+  box-shadow: 0rem 0rem .1rem .2rem var(--light-invisible-text-color);
+  border-radius: 1rem;
+  width: var(--profile-width);
   display: flex;
   flex-direction: column;
+  gap: .5rem;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  transition: all 50ms ease-in-out;
+}
+
+.profile:hover {
+  box-shadow: none;
+  transform: scale(101%);
+}
+
+.profile > .avatar > img {
+  border-radius: 50%;
+  width: 8rem;
+  height: 8rem;
+  transition: all 100ms ease-in-out;
+}
+
+.profile > .avatar:hover > img {
+  border: .1rem solid var(--text-color);
+}
+
+.profile > .username::before {
+  content: 'Good Day! ';
+  color: var(--text-color);
+  font-weight: lighter;
+}
+
+.profile > .username {
+  font-size: 1.5rem;
+  font-weight: bolder;
+  color: var(--red);
+  border-bottom: .1rem solid var(--text-color);
+  font-style: italic;
+}
+
+.profile > .quote {
+  text-align: center;
+  font-style: italic;
+}
+
+.shortcuts {
+  display: flex;
+  width: var(--profile-width);
+  background-color: var(--light-invisible-darker-background-color);
+  box-shadow: 0rem 0rem .1rem .2rem var(--light-invisible-text-color);
+  justify-content: space-evenly;
+  border-radius: 1rem;
+  padding: .4rem;
+  transition: all 100ms ease-in-out;
+}
+
+.shortcuts:hover {
+  box-shadow: none;
+  transform: scale(101%);
+}
+
+.shortcuts > .item {
+  flex: 1;
+  display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 2rem 0 2rem;
-  overflow-y: scroll;
+  text-decoration: none;
 }
 
-.quote > .text { 
-  color: var(--green); 
-  text-align: center; 
-}
-
-.shortcuts { 
-  grid-area: shortcuts; 
-  background-color: var(--darker-background-color);
-  display: flex;
-}
 .shortcuts > .item > img {
-  width: 5rem;
-  height: 5rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  transition: all 50ms ease-in-out;
+}
+.shortcuts > .item:hover > img {
+  transform: scale(115%);
 }
 
-@media screen and (max-width: 900px) {
-  .grid { 
-    gap: .2rem;
-    grid-template-areas: 
-      "profile profile profile"
-      "time time time"
-      "quote quote quote";
+@media only screen and (max-width: 900px) {
+  .profile-wrapper {
+    --profile-width: 20rem;
   }
-  .profile {
-    border-bottom-right-radius: 0;
+  .shortcuts {
+    display: none;
   }
-  .profile > .image > img {
-    width: 6rem;
-    height: 6rem;
-  }
-  .profile > .text {
-    font-size: 1.3rem;
-  }
-  .time > .hms {
-    border-bottom-left-radius: 0;
-    border-top-right-radius: 1rem;
-  }
-  .time > .date {
-    border-top-left-radius: 1rem;
-  }
-  .quote { 
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
-  }
-  .shortcuts { display: none; }
 }

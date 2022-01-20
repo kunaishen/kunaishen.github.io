@@ -1,108 +1,25 @@
----
-function retTimeData() {
-  const weekdays = ["Sun","Mon","Tues","Wed","Thu","Fri","Sat"];
-  const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-  const now = new Date();
-  const hours = String(now.getHours() % 12).padStart(2, '0');
-  const minutes = String(now.getMinutes()).padStart(2, '0');
-  const meridiem = now.getHours() < 12 ? 'AM' : 'PM';
-
-  const weekday = weekdays[ now.getDay() ];
-  const month = months[ now.getMonth() ];
-  const day = now.getDate();
-  return { hours, minutes, meridiem, weekday, month, day };
-}
-function getQuote() {
-  return fetch("https://api.quotable.io/random").then(res => res.json());
-}
-
-const time = retTimeData();
-const quote = await getQuote();
-
----
 <link rel="stylesheet" type="text/css" href={Astro.resolve("../styles/home.css")}>
-<div class="background" data-img-path="false"></div>
-<div class="main">
-  <div class="grid">
-    <div class="profile">
-      <div class="image">
-        <img src="./assets/icons/avatar.png" alt="cannot load image">
-      </div>
-      <div class="text">
-        Good Day! <b>Aishen</b>.
-      </div>
-    </div>
-    <div class="time">
-      <div class="hms">
-        <span class="hour">{time.hours}</span> : 
-        <span class="minute">{time.minutes}</span>
-        <span class="meridiem" data-meridiem={time.meridiem}>{time.meridiem}</span>
-      </div>
-      <div class="date">
-        <span class="weekday">{time.weekday}</span>
-        <span class="month">{time.month}</span>
-        <span class="day">{time.day}</span>
-      </div>
-    </div>
-    <div class="shortcuts nav">
-      <a href="https://discord.com/developers" class="item"><img src="./assets/icons/discord.png" alt="discord"></a>
-      <a href="https://facebook.com" class="item"><img src="./assets/icons/facebook.png" alt="facebook"></a>
-      <a href="https://github.com" class="item"><img src="./assets/icons/github.png" alt="github"></a>
-      <a href="https://gmail.com" class="item"><img src="./assets/icons/gmail.png" alt="gmail"></a>
-      <a href="https://reddit.com" class="item"><img src="./assets/icons/reddit.png" alt="reddit"></a>
-    </div>
-    <div class="quote">
-      <div class="text">"{quote.content}"</div>
-      <div class="author">{quote.author}</div>
-    </div>
+
+<div class="wrapper profile-wrapper">
+  <div class="profile">
+    <div class="avatar"><img src="./assets/icons/avatar.png" alt="cannot load image"></div>
+    <div class="username unselectable">@Aishen</div>
+    <div class="quote">loading quote...</div>
+  </div>
+  <div class="shortcuts">
+    <a href="https://discord.com/developers" class="item"><img src="./assets/icons/discord.png" alt="discord"></a>
+    <a href="https://facebook.com" class="item"><img src="./assets/icons/facebook.png" alt="facebook"></a>
+    <a href="https://reddit.com" class="item"><img src="./assets/icons/reddit.png" alt="reddit"></a>
+    <a href="https://github.com" class="item"><img src="./assets/icons/github.png" alt="github"></a>
+    <a href="https://gmail.com" class="item"><img src="./assets/icons/gmail.png" alt="gmail"></a>
   </div>
 </div>
 <script>
-
-  function retTimeData() {
-    const weekdays = ["Sun","Mon","Tues","Wed","Thu","Fri","Sat"];
-    const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-    const now = new Date();
-    const hours = String(now.getHours() % 12).padStart(2, '0');
-    const minutes = String(now.getMinutes()).padStart(2, '0');
-    const meridiem = now.getHours() < 12 ? 'AM' : 'PM';
-
-    const weekday = weekdays[ now.getDay() ];
-    const month = months[ now.getMonth() ];
-    const day = now.getDate();
-    return { hours, minutes, meridiem, weekday, month, day };
-  }
-
-  function getQuote() {
-    return fetch("https://api.quotable.io/random").then(res => res.json());
-  }
-
-  function setAttrValByQuery(query, value) {
-    const element = document.querySelector(query);
-    if (element.innerText != value) element.innerText = value;
-  }
-
-  function updateTime() {
-    const data = retTimeData();
-    const meridiem = document.querySelector('.time > .hms > .meridiem');
-
-    meridiem.dataset.meridiem = data.meridiem;
-    setAttrValByQuery('.time > .hms > .hour', data.hours);
-    setAttrValByQuery('.time > .hms > .minute', data.minutes);
-    setAttrValByQuery('.time > .hms > .meridiem', data.meridiem);
-    setAttrValByQuery('.time > .date > .weekday', data.weekday);
-    setAttrValByQuery('.time > .date > .month', data.month);
-    setAttrValByQuery('.time > .date > .day', data.day);
-
-  }
-
   async function updateQuote() {
-    const data = await getQuote();
+    const element = document.querySelector('.profile > .quote');
+    const quote = await fetch("https://api.quotable.io/random").then(res => res.json());
+    element.innerText = `"${quote.content}"`;
+  };
 
-    setAttrValByQuery('.quote > .text', `"${data.content}"`);
-    setAttrValByQuery('.quote > .author', data.author);
-  }
-
-  setInterval(updateTime, 1000);
-  setInterval(updateQuote, 1000 * 60);
+  updateQuote();
 </script>
