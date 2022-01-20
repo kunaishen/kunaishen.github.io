@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 
 :root {
-  --darker-background-color: #0D1011;
-  --background-color: #25222b;
-  --text-color: #fff;
+  --darker-background-color: #0D1017;
+  --light-invisible-darker-background-color: #0d1017c4;
+  --light-invisible-text-color: #fffed90a;
+  --background-color: #1F2430;
+  --text-color: #fffed9;
   --red: #B22B27;
   --green: #71BC68;
   --yellow: #EFD033;
@@ -24,12 +26,19 @@
 html { font-size: 16px; }
 
 body {
-  font-family: 'Varela Round', sans-serif;
+  font-family: 'Varela Round', 'Courier New', Courier, sans-serif;
   background-color: var(--background-color);
   color: var(--text-color);
 }
 
 .unselectable {
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+}
+img {
   user-select: none;
   -moz-user-select: none;
   -khtml-user-select: none;
