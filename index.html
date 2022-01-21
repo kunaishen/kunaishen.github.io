@@ -1,0 +1,105 @@
+<!DOCTYPE html><html lang="en"><head>
+		
+<meta charset="UTF-8">
+<meta name="author" content="Aishen">
+<meta property="og:url" content="https://kunaishen.github.io">
+<meta property="og:title" content="Portfolio Website">
+<meta property="og:type" content="website">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="My personal portfolio">
+<meta name="keywords" content="aishen">
+<link rel="icon" type="image/png" href="/favicon.ico">
+<title>Aishen</title>
+<link rel="stylesheet" type="text/css" href="./assets/global.fe0c0c5a.css"><link rel="stylesheet" type="text/css" href="./assets/header.1fb5623f.css"><link rel="stylesheet" type="text/css" href="./assets/index.2d531e12.css">
+
+	</head>
+<body>
+	<main>
+		
+<div class="background astro-5JFH2BWB" data-landscapes="city.png|||clouds.jpg|||waifu_aesthetic.jpg|||yukigruv.png" data-portraits="ima_chan.png" data-path="./assets/background/"></div>
+<script>
+  const element = document.querySelector('.background');
+  
+  function parallaxEffect(e) {
+    const width = window.innerWidth / 2;
+    const height = window.innerHeight / 2;
+
+    const mouse = { x: e.clientX, y: e.clientY };
+
+    const depths = [
+      `${50 - (mouse.x - width) * 0.06}% ${50 - (mouse.y - height) * 0.06}%`,
+      `${50 - (mouse.x - width) * 0.02}% ${50 - (mouse.y - height) * 0.02}%`,
+      `${50 - (mouse.x - width) * 0.01}% ${50 - (mouse.y - height) * 0.01}%`
+    ];
+
+    element.style.backgroundPosition = depths.join(', ');
+  }
+
+  function loadBackground() {
+
+    const type = window.innerWidth > 900 ? 'landscapes' : 'portraits';
+    const images = element.dataset[type].split('|||');
+    const image = images[Math.floor(Math.random() * images.length)];
+    const path = element.dataset.path + type;
+    const fullPath = `${path}/${image}`;
+    const lGradient = 'linear-gradient(rgb(0,0,0,0.7), rgb(0,0,0,0.9))';
+
+    console.log(fullPath);
+    element.style.background = `${lGradient}, url('${fullPath}')`;
+    element.style.backgroundSize = '110vw 115vh';
+    element.style.backgroundRepeat = 'no-repeat';
+    element.style.backgroundPosition = 'center';
+    element.style.width = '100vw';
+    element.style.height = '100vh';
+    element.style.position = 'relative';
+    element.style.zIndex = '-1';
+  }
+
+
+  loadBackground();
+  document.addEventListener('mousemove', parallaxEffect);
+</script>
+
+
+		
+<header class="unselectable">
+  <div class="title"><h2>Aishen | Portfolio</h2></div>
+  <div class="nav">
+    <a href="/" class="item active">
+      <div class="item-name">Home</div>
+    </a>
+    <a href="/about" class="item">
+      <div class="item-name">About</div>
+    </a>
+    <a href="/other" class="item">
+      <div class="item-name">Other</div>
+    </a>
+  </div>
+</header>
+		
+
+<div class="wrapper profile-wrapper">
+  <div class="profile">
+    <div class="avatar"><img src="./assets/icons/avatar.png" alt="cannot load image"></div>
+    <div class="username unselectable">@Aishen</div>
+    <div class="quote">loading quote...</div>
+  </div>
+  <div class="shortcuts">
+    <a href="https://discord.com/developers" class="item"><img src="./assets/icons/discord.png" alt="discord"></a>
+    <a href="https://facebook.com" class="item"><img src="./assets/icons/facebook.png" alt="facebook"></a>
+    <a href="https://reddit.com" class="item"><img src="./assets/icons/reddit.png" alt="reddit"></a>
+    <a href="https://github.com" class="item"><img src="./assets/icons/github.png" alt="github"></a>
+    <a href="https://gmail.com" class="item"><img src="./assets/icons/gmail.png" alt="gmail"></a>
+  </div>
+</div>
+<script>
+  async function updateQuote() {
+    const element = document.querySelector('.profile > .quote');
+    const quote = await fetch("https://api.quotable.io/random").then(res => res.json());
+    element.innerText = `"${quote.content}"`;
+  };
+
+  updateQuote();
+</script>
+	</main>
+</body></html>
