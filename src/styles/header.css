@@ -8,9 +8,11 @@ header {
   display: grid;
   grid-template-areas: "title nav";
   transition: all 100ms ease-in-out;
+  grid-template-columns: 1fr 1fr;
 }
+
 header:hover {
-  height: 3.8rem;
+  grid-template-columns: .99fr 1.01fr;
 }
 
 .title {
@@ -53,6 +55,11 @@ header:hover {
 }
 
 @media screen and (max-width: 900px) {
-  header { grid-template-areas: "nav";}
+  header { 
+    grid-template-areas: "nav"; grid-template-columns: 1fr;
+  }
+  header:hover {
+    grid-template-columns: 1fr;
+  }
   .title { display: none; }
 }
