@@ -1,6 +1,0 @@
-{
-  "compilerOptions": {
-    "target": "ESNext",
-    "types": ["vite/client"]
-  }
-}
