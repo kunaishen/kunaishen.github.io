@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+:root {
+    --base-background-color: #161b25;
+    --base-text-color: #dae5fa;
+}
+
+*, 
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Varela Round', 'Courier New', Courier, sans-serif;
+    background-color: var(--base-background-color);
+    color: var(--base-text-color);
+}
+
+div.unselectable {
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+}
