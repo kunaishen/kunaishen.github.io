@@ -1,0 +1,17 @@
+div.main-header {
+    max-width: var(--base-width);
+    height: 3.5rem;
+    width: 90%;
+
+    background-color: var(--header-color);
+
+    position: absolute;
+    z-index: 10;
+    top: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

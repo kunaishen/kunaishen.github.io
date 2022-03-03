@@ -1,0 +1,50 @@
+div.image-header {
+    max-width: var(--base-width);
+    height: calc(var(--base-width) / (9 / 2));
+    width: 90%;
+
+    position: absolute;
+    top: calc(5% + 3.5rem);
+
+    left: 50%;
+    transform: translateX(-50%);
+
+    background: linear-gradient(rgb(0, 0, 0, 0.7), rgb(0, 0, 0, 0.9)), 
+        url("/assets/images/ima-chan.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 0% 70%;
+}
+
+div.content {
+    max-width: var(--base-width);
+    width: 90%;
+
+    position: absolute;
+    top: calc(5% + 3.5rem + (var(--base-width) / (9 / 2)));
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+
+    left: 50%;
+    transform: translateX(-50%);
+
+    border-top: solid 1px var(--base-text-color);
+
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-areas: 
+        "header header  header"
+        "nav    context context";
+}
+
+div.content > div.header {
+    width: 100%;
+
+    grid-area: header; 
+    font-weight: bold;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

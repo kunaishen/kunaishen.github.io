@@ -1,8 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 
 :root {
-    --base-background-color: #161b25;
-    --base-text-color: #dae5fa;
+    --base-background-color: #1D2021;
+    --base-text-color: #f8e9e2;
+    --base-width: 750px;
+
+    --header-color: #272A2B;
 }
 
 *, 
@@ -19,8 +22,10 @@ html {
 
 body {
     font-family: 'Varela Round', 'Courier New', Courier, sans-serif;
-    background-color: var(--base-background-color);
     color: var(--base-text-color);
+    background: url("https://raw.githubusercontent.com/janleigh/walls/master/gruvbox/gruvbox-8.png"), 
+        var(--base-background-color);
+    background-size: cover;
 }
 
 div.unselectable {
