@@ -48,3 +48,11 @@ div.content > div.header {
     justify-content: center;
     align-items: center;
 }
+
+div.content > div.header > div.subtitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+}
