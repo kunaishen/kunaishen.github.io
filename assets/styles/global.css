@@ -26,6 +26,7 @@ body {
     background: url("https://raw.githubusercontent.com/janleigh/walls/master/gruvbox/gruvbox-8.png"), 
         var(--base-background-color);
     background-size: cover;
+    background-repeat: no-repeat;
 }
 
 div.unselectable {
