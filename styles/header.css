@@ -1,0 +1,63 @@
+:root {
+    --header-height: 3.5rem;
+}
+
+header {
+    width: 100vw;
+    height: var(--header-height);
+
+    background-color: var(--palette-dark);
+}
+
+header > nav {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+header > nav > div.nav-menu {
+    flex-grow: 1;
+    font-size: 1.7rem;
+}
+
+header > nav > div.nav-separator {
+    flex-grow: 16;
+}
+
+header > nav > div.nav-theme-changer {
+    flex-grow: 1;
+}
+
+header > nav > div.nav-theme-changer > button {
+    border: none;
+    padding: .2rem;
+    font-size: 1.3rem; 
+    background-color: var(--palette-dark);
+    color: var(--palette-lighter);
+}
+
+header > nav > div.nav-github {
+    flex-grow: 1;
+    font-size: 1.1rem;
+}
+
+header > nav > div.nav-github:hover > a,
+header > nav > div.nav-theme-changer:hover > button {
+    cursor: pointer;
+    color: var(--palette-lightest);
+    border-bottom: solid .1rem var(--palette-lightest);
+    transition: color 200ms linear, border-bottom 1s ease-in;
+}
+
+header > nav > div.nav-github > a {
+    color: var(--palette-lighter);
+}
+
+@media screen and (max-width: 900px) {
+    header > nav > div.nav-separator {
+        flex-grow: 8;
+    }
+}

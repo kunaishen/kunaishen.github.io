@@ -5,50 +5,52 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:description" content="just another website" />
+    <meta property="og:description" content="portfolio website"/>
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://aishenreemo.github.io/" />
-    <meta property="og:image" content="https://raw.githubusercontent.com/janleigh/walls/master/gruvbox/gruvbox-8.png" />
-    
-    <link 
-        type="application/json+oembed" 
-        href="https://gist.githubusercontent.com/aishenreemo/5be4c1653fb75ddfa50ec24df276bae6/raw/9fd79a4809caa735d069397beeb9a177ca550227/oembed.json" 
-    />
+    <meta property="og:url" content="https://aishenreemo.github.io/"/>
     
     <meta name="theme-color" content="#1D2021">
     <meta name="twitter:card" content="summary_large_image">
-    <link rel="stylesheet" type="text/css" href="./assets/styles/global.css">
-    <link rel="stylesheet" type="text/css" href="./assets/styles/index.css">
-    <link rel="stylesheet" type="text/css" href="./assets/styles/header.css">
+
+    <link rel="stylesheet" type="text/css" href="styles/global.css">
+    <link rel="stylesheet" type="text/css" href="styles/home.css">
+    <script src="scripts/handleTheme.js"></script>
 </head>
 <body>
-    <main>
-        <div class="main-header">
-            idk what to put in the header so i put this text instead
-        </div>
-
-        <div class="image-header"></div>
-        <div class="content">
-            <div class="header">
-                <div class="title" style="font-size: 2rem;">
-                    Hi! I'm Aishen
-                </div>
-                <div class="subtitle">
-                    <img 
-                        alt="reemo#6935" 
-                        src="https://img.shields.io/badge/discord-reemo%236935-%237289DA.svg?style=flat-square&logo=discord&logoColor=white"
-                    >
-                    <img 
-                        alt="aishenreemo" 
-                        src="https://img.shields.io/badge/github-aishenreemo-black.svg?style=flat-square&logo=github&logoColor=white"
-                    >
-                    <img 
-                        alt="aish3n@pm.me" 
-                        src="https://img.shields.io/badge/mail-aish3n@pm.me-%23f8e9e2.svg?style=flat-square&logo=protonmail&logoColor=white"
-                    >
-                </div>
+    <link rel="stylesheet" type="text/css" href="styles/header.css">
+    <header>
+        <nav>
+            <div class="nav-menu">≡</div>
+            <div class="nav-separator"></div>
+            <div class="nav-theme-changer"><button onClick="changeTheme()"> ☂  </button></div>
+            <div class="nav-github">
+                <a href="https://github.com/aishenreemo/aishenreemo.github.io">Source</a>
             </div>
+        </nav>
+    </header>
+    <section class="intro" id="home">
+        <div class="intro-title">Hello, I'm <span>Aishen</span></div>
+        <div class="intro-subtitile">A hobbyist programmer from the <span>Philippines</span>.</div>
+        <div class="intro-icons">
+            <a href="https://discord.com/users/939782577345146881">
+                <img 
+                    alt="reemo#6935" 
+                    src="https://img.shields.io/badge/discord-reemo%236935-%237289DA.svg?style=flat-square&logo=discord&logoColor=white"
+                >
+            </a>
+            <a href="https://github.com/aishenreemo">
+                <img 
+                    alt="aishenreemo" 
+                    src="https://img.shields.io/badge/github-aishenreemo-black.svg?style=flat-square&logo=github&logoColor=white"
+                >
+            </a>
+            <a href="mailto:aish3n@pm.me">
+                <img 
+                    alt="aish3n@pm.me" 
+                    src="https://img.shields.io/badge/mail-aish3n@pm.me-%23f8e9e2.svg?style=flat-square&logo=protonmail&logoColor=white"
+                >
+            </a>
         </div>
-    </main>
+    </section>
 </body>
 </html>
