@@ -11,6 +11,15 @@
     --header-height: 0;
 }
 
+@keyframes slide {
+    0% {
+        transform: translateY(-10%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
 *, 
 *::before,
 *::after {
@@ -23,11 +32,13 @@
 html {
     font-size: 16px;
     font-family: "Inter", sans-serif;
+    scroll-behavior: smooth;
 }
 
 body {
     background-color: var(--palette-darkest);
     color: var(--palette-lighter);
+    animation: 2s ease-out 0s 1 slide;
 }
 
 a {

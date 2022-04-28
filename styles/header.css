@@ -6,7 +6,7 @@ header {
     width: 100vw;
     height: var(--header-height);
 
-    background-color: var(--palette-dark);
+    background: linear-gradient(to left, var(--palette-dark), var(--palette-darkest));
 }
 
 header > nav {
@@ -18,9 +18,29 @@ header > nav {
     text-align: center;
 }
 
-header > nav > div.nav-menu {
+header > nav > div.nav-menu-button {
     flex-grow: 1;
-    font-size: 1.7rem;
+    transition: transform 200ms ease-in;
+}
+
+header > nav > div.nav-menu-button > button {
+    font-size: 1.7rem;    
+    cursor: pointer;
+    border: none;
+    padding: .2rem;
+    background-color: var(--palette-dark);
+    color: var(--palette-lighter);
+}
+
+header > nav > div.nav-menu-item {
+    flex-grow: 1;
+    transform: translateX(-200%);
+    transition-property: opacity, transform;
+    transition-duration: 0.3s;
+}
+
+header > nav > div.nav-menu-item > a {
+    color: var(--palette-lighter);
 }
 
 header > nav > div.nav-separator {
@@ -39,21 +59,11 @@ header > nav > div.nav-theme-changer > button {
     color: var(--palette-lighter);
 }
 
-header > nav > div.nav-github {
-    flex-grow: 1;
-    font-size: 1.1rem;
-}
-
-header > nav > div.nav-github:hover > a,
 header > nav > div.nav-theme-changer:hover > button {
     cursor: pointer;
     color: var(--palette-lightest);
     border-bottom: solid .1rem var(--palette-lightest);
     transition: color 200ms linear, border-bottom 1s ease-in;
-}
-
-header > nav > div.nav-github > a {
-    color: var(--palette-lighter);
 }
 
 @media screen and (max-width: 900px) {

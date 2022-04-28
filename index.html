@@ -18,39 +18,22 @@
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="styles/header.css">
+    <script src="scripts/handleMenu.js"></script>
     <header>
         <nav>
-            <div class="nav-menu">≡</div>
+            <div class="nav-menu-button" id="nav-menu-button"><button onClick="toggleMenu()">≡</button></div>
+            <div class="nav-menu-home nav-menu-item" id="nav-menu-home"><a href="#intro">Home</a></div>
             <div class="nav-separator"></div>
             <div class="nav-theme-changer"><button onClick="changeTheme()"> ☂  </button></div>
-            <div class="nav-github">
-                <a href="https://github.com/aishenreemo/aishenreemo.github.io">Source</a>
-            </div>
         </nav>
     </header>
-    <section class="intro" id="home">
+    <section class="intro" id="intro">
         <div class="intro-title">Hello, I'm <span>Aishen</span></div>
         <div class="intro-subtitile">A hobbyist programmer from the <span>Philippines</span>.</div>
-        <div class="intro-icons">
-            <a href="https://discord.com/users/939782577345146881">
-                <img 
-                    alt="reemo#6935" 
-                    src="https://img.shields.io/badge/discord-reemo%236935-%237289DA.svg?style=flat-square&logo=discord&logoColor=white"
-                >
-            </a>
-            <a href="https://github.com/aishenreemo">
-                <img 
-                    alt="aishenreemo" 
-                    src="https://img.shields.io/badge/github-aishenreemo-black.svg?style=flat-square&logo=github&logoColor=white"
-                >
-            </a>
-            <a href="mailto:aish3n@pm.me">
-                <img 
-                    alt="aish3n@pm.me" 
-                    src="https://img.shields.io/badge/mail-aish3n@pm.me-%23f8e9e2.svg?style=flat-square&logo=protonmail&logoColor=white"
-                >
-            </a>
-        </div>
     </section>
+    <link rel="stylesheet" type="text/css" href="styles/footer.css">
+    <footer>
+        © 2022 Aishen. All rights reserved.
+    </footer>
 </body>
 </html>
