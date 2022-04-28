@@ -1,10 +1,9 @@
-:root {
-    --header-height: 3.5rem;
-}
-
 header {
     width: 100vw;
-    height: var(--header-height);
+    height: 3.5rem;
+
+    position: fixed;
+    top: 0;
 
     background: linear-gradient(to left, var(--palette-dark), var(--palette-darkest));
 }

@@ -1,6 +1,6 @@
 section.intro {
     width: 100vw;
-    height: calc(100vh - var(--header-height));
+    height: 100vh; 
     display: flex;
     justify-content: center;
     align-items: center;
