@@ -9,7 +9,7 @@ section.intro {
 }
 
 section.intro > div.intro-title {
-    font-size: 3rem;
+    font-size: clamp(1rem, 8vmin, 3rem);
 }
 
 section.intro > div > span {
@@ -18,11 +18,10 @@ section.intro > div > span {
 }
 
 section.intro > div.intro-subtitle {
-    font-size: 2rem;
+    font-size: clamp(.5rem, 8vmin, 2rem);
 }
 
 section.intro > div:nth-child(n % 2 + 1) > span {
     font-weight: bold;
     color: var(--palette-lightest);
 }
-
