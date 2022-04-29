@@ -27,13 +27,14 @@ header > nav > div.nav-menu-button > button {
     cursor: pointer;
     border: none;
     padding: .2rem;
-    background-color: var(--palette-dark);
+    background-color: var(--palette-darkest);
     color: var(--palette-lighter);
 }
 
 header > nav > div.nav-menu-item {
     flex-grow: 1;
-    transform: translateX(-200%);
+    opacity: 0;
+    transform: translateX(-1000%);
     transition-property: opacity, transform;
     transition-duration: 0.3s;
 }
@@ -58,7 +59,8 @@ header > nav > div.nav-theme-changer > button {
     color: var(--palette-lighter);
 }
 
-header > nav > div.nav-theme-changer:hover > button {
+header > nav > div.nav-theme-changer:hover > button,
+header> nav > div.nav-menu-item:hover > a {
     cursor: pointer;
     color: var(--palette-lightest);
     border-bottom: solid .1rem var(--palette-lightest);

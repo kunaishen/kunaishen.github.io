@@ -27,7 +27,7 @@ function showMenu() {
         let element = elements[i];
         element.style.opacity =  '1';
         element.style.transform = "translateX(0)"; 
-        element.style.transitionDelay = `calc(500ms * ${i})`;
+        element.style.transitionDelay = `calc(200ms * ${(elements.length - 1) - i})`;
         element.style.pointerEvents = "auto";
     }
 }
@@ -38,7 +38,10 @@ function hideMenu() {
     for (let i = 0; i < elements.length; i++) {
         let element = elements[i];
         element.style.opacity =  '0';
-        element.style.transform = "translateX(-200%)"; 
+        element.style.transitionDelay = `calc(200ms * ${i})`;
+        element.style.transform = "translateX(-1000%)"; 
         element.style.pointerEvents = "none";
     }
 }
+
+toggleMenu();

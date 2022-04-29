@@ -2,9 +2,11 @@
 
 @keyframes slide {
     0% {
+        opacity: 0;
         transform: translateY(-10%);
     }
     100% {
+        opacity: 1;
         transform: translateY(0);
     }
 }
@@ -27,7 +29,10 @@ html {
 body {
     background-color: var(--palette-darkest);
     color: var(--palette-lighter);
-    animation: 2s ease-out 0s 1 slide;
+}
+
+section {
+    animation: 1.5s ease-out 0s 1 slide;
 }
 
 a {

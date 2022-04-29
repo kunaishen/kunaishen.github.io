@@ -1,4 +1,10 @@
+hr {
+    color: var(--palette-medium);
+    opacity: 0.2;
+}
+
 section.intro {
+    cursor: default;
     width: 100vw;
     height: 100vh; 
     display: flex;
@@ -10,6 +16,10 @@ section.intro {
 
 section.intro > div.intro-title {
     font-size: clamp(1rem, 8vmin, 3rem);
+}
+
+section.intro > div.intro-title > span {
+    animation: 3s ease-in 0s 1 slide; 
 }
 
 section.intro > div > span {
@@ -24,4 +34,20 @@ section.intro > div.intro-subtitle {
 section.intro > div:nth-child(n % 2 + 1) > span {
     font-weight: bold;
     color: var(--palette-lightest);
+}
+
+section.about {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 0 2rem 0 2rem;
+}
+
+section.about > div.about-title {
+    color: var(--palette-lightest);
+    font-size: clamp(1rem, 8vmin, 3rem);
 }

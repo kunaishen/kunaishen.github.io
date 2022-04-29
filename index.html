@@ -15,25 +15,31 @@
     <link rel="stylesheet" type="text/css" href="styles/global.css">
     <link rel="stylesheet" type="text/css" href="styles/home.css">
     <script src="scripts/handleTheme.js"></script>
+    <script src="scripts/scrollBehavior.js"></script>
 </head>
 <body>
     <link rel="stylesheet" type="text/css" href="styles/header.css">
-    <script src="scripts/handleMenu.js"></script>
     <header>
         <nav>
             <div class="nav-menu-button" id="nav-menu-button"><button onClick="toggleMenu()">≡</button></div>
             <div class="nav-menu-item"><a href="#intro">Home</a></div>
+            <div class="nav-menu-item"><a href="#about">About</a></div>
             <div class="nav-separator"></div>
             <div class="nav-theme-changer"><button onClick="changeTheme()"> ☂  </button></div>
         </nav>
     </header>
+    <script src="scripts/handleMenu.js"></script>
     <section class="intro" id="intro">
-        <div class="intro-title">Hello, I'm <span>Aishen</span></div>
-        <div class="intro-subtitile">A hobbyist programmer from the <span>Philippines</span>.</div>
+        <div class="intro-title">Hello, it's me <span>Aishen</span></div>
+        <div class="intro-subtitile">An enthusiastic programmer from <span>PH</span>.</div>
+    </section><hr>
+    <section class="about" id="about">
+        <div class="about-title">About.</div>
+        <div class="about-description">I love to code anything I want. Well I don’t always have time to code…  but when I do, I don’t. Who reads this anyway?</div>
     </section>
     <link rel="stylesheet" type="text/css" href="styles/footer.css">
     <footer>
-        © 2022 Aishen. All rights reserved.
+        Copyright © 2022 Aishen. All rights reserved.
     </footer>
 </body>
 </html>
