@@ -1,6 +1,7 @@
 const themes = [
     "kizu.css",
-    "dark_academic.css",
+    "galaxy.css",
+    "anatomy.css",
 ];
 
 function changeTheme() {
