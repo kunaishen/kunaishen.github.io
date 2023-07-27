@@ -1,8 +1,0 @@
-footer {
-    width: 100vw;
-    height: 7rem;
-
-    background: linear-gradient(to left, var(--palette-dark), var(--palette-darkest));
-    display: grid;
-    place-items: center;
-}

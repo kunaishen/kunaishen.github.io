@@ -1,0 +1,63 @@
+@font-face {
+    font-family: "Sarasa Mono CL Regular";
+    src: url("fonts/sarasa-mono-cl-regular.ttf");
+}
+
+:root {
+    --color-bg: #131718;
+    --color-fg: #CCCCCC;
+    --color-red: #df5b61;
+    --color-green: #87c7a1;
+    --color-orange: #de8f78;
+    --color-blue: #6791c9;
+    --color-violet: #bc83e3;
+    --color-cyan: #70b9cc;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Sarasa Mono CL Regular";
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-cyan);
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.background {
+    background-image: url("images/bg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 120%;
+    height: 120%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    filter: blur(0.5rem);
+    z-index: -1;
+}
+
+.main, .container {
+    width: clamp(350px, 80vw, 750px);
+    height: 75vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+}
+
+.container {
+    background-color: var(--color-bg);
+    opacity: 0.9;
+    border: outset 1px var(--color-green);
+}
