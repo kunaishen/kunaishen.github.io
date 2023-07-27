@@ -25,7 +25,7 @@
 
 body {
     background-color: var(--color-bg);
-    color: var(--color-cyan);
+    color: var(--color-fg);
     width: 100vw;
     height: 100vh;
     overflow: hidden;
@@ -36,8 +36,9 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    width: 120%;
-    height: 120%;
+    background-size: 105vw 115vh;
+    width: 100%;
+    height: 100%;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -59,5 +60,9 @@ body {
 .container {
     background-color: var(--color-bg);
     opacity: 0.9;
-    border: outset 1px var(--color-green);
+    border: dotted 1px var(--color-green);
+}
+
+.main {
+    padding: 1em;
 }
