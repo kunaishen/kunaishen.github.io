@@ -21,6 +21,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Sarasa Mono CL Regular";
+    scroll-behavior: smooth;
 }
 
 body {
@@ -29,6 +30,32 @@ body {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
+    font-size: 16px;
+}
+
+img {
+    display: inline;
+    margin: 0 auto;
+    height: 100%;
+    width: auto;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-fg);
+}
+
+a:visited {
+    color: var(--color-violet);
+}
+
+a:hover {
+    color: var(--color-orange);
+    font-weight: bolder;
+}
+
+a:active {
+    color: var(--color-red);
 }
 
 .background {
@@ -36,7 +63,7 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 105vw 115vh;
+    background-size: 102vw 105vh;
     width: 100%;
     height: 100%;
     position: absolute;
@@ -60,9 +87,63 @@ body {
 .container {
     background-color: var(--color-bg);
     opacity: 0.9;
-    border: dotted 1px var(--color-green);
+    border: outset 1px var(--color-green);
 }
 
 .main {
     padding: 1em;
+    padding-top: 0;
+    display: flex;
+    overflow-y: hidden;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.main > div {
+    width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+    flex-grow: 0;
+    padding: 1em;
+}
+
+#intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 1em;
+    text-align: center;
+}
+
+.pfp {
+    width: clamp(8rem, 50%, 13rem);
+    aspect-ratio: 1 / 1;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    border: outset 2px var(--color-red);
+}
+
+.name {
+    font-size: 32px;
+    font-weight: bolder;
+}
+
+.name > span {
+    color: var(--color-orange);
+}
+
+.desc {
+    font-size: 16px;
+    font-style: italic;
+    font-weight: lighter;
+}
+
+.nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
 }
