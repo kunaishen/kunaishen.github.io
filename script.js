@@ -58,17 +58,14 @@ document.addEventListener("click", (e) => {
 
 document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener("click", (e) => {
-        e.preventDefault();
         const targetId = link.getAttribute("href").slice(1);
         const targetElement = document.getElementById(targetId);
 
+        if (!targetElement) return;
+
         for (let i = 0; i < pages_len; i++) {
-            if (main.children[i].id != targetId) continue;
-            console.log(i);
+            if (main.children[i].getAttribute("id") != targetId) continue;
             page_index = i;
         }
-
-        if (!targetElement) return;
-        targetElement.scrollIntoView({ behavior: "smooth" });
     });
 });
