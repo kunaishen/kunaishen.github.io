@@ -69,3 +69,17 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
         }
     });
 });
+
+let is_resize_cooldown = false;
+window.addEventListener("resize", () => {
+    if (is_resize_cooldown) return;
+
+    is_resize_cooldown = true;
+    const targetId = window.location.hash.slice(1);
+    const targetElement = document.getElementById(targetId);
+    console.log(targetId);
+
+    setTimeout(() => { is_resize_cooldown = false; }, 250);
+    if (!targetElement) return;
+    targetElement.scrollIntoView({ behavior: "smooth" });
+});
