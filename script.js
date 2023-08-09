@@ -1,4 +1,4 @@
-const background = document.querySelector(".background");
+const background = document.querySelector("#background");
 
 document.addEventListener("mousemove", (e) => {
     const width = window.innerWidth / 2;
@@ -15,7 +15,7 @@ document.addEventListener("mousemove", (e) => {
     background.style.backgroundPosition = depths.join(", ");
 });
 
-const main = document.querySelector(".main");
+const main = document.querySelector("#main");
 const pages_len = main.children.length;
 
 let is_wheel_cd = false;
