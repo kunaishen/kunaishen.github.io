@@ -39,23 +39,6 @@ document.addEventListener("wheel", (e) => {
     setTimeout(enable, 250);
 });
 
-document.addEventListener("click", (e) => {
-    if (is_wheel_cd) return;
-    is_wheel_cd = true;
-    const divider = window.innerHeight / 2;
-
-    if (e.clientY < divider) {
-        page_index -= 1;
-        if (page_index < 0) page_index = 0;
-    } else {
-        page_index += 1;
-        if (page_index == pages_len) page_index = pages_len - 1;
-    }
-
-    window.location.href = "#" + main.children[page_index].id;
-    setTimeout(enable, 250);
-});
-
 document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener("click", (e) => {
         const targetId = link.getAttribute("href").slice(1);
@@ -80,6 +63,32 @@ window.addEventListener("resize", () => {
     console.log(targetId);
 
     setTimeout(() => { is_resize_cooldown = false; }, 250);
+    if (!targetElement) return;
+    targetElement.scrollIntoView({ behavior: "smooth" });
+});
+
+let project_index = 0;
+const project_elements = ["dotfiles", "route-flow"];
+const project_items = document.querySelector("#projects > .container > .items");
+
+document.querySelector("#projects > .container > .prev-btn").addEventListener("click", () => {
+    project_index -= 1;
+    if (project_index < 0) {
+        project_index = project_elements.length - 1;
+    }
+
+    const targetElement = document.getElementById(project_elements[project_index]);
+    if (!targetElement) return;
+    targetElement.scrollIntoView({ behavior: "smooth" });
+});
+
+document.querySelector("#projects > .container > .next-btn").addEventListener("click", () => {
+    project_index += 1;
+    if (project_index >= project_elements.length) {
+        project_index = 0;
+    }
+
+    const targetElement = document.getElementById(project_elements[project_index]);
     if (!targetElement) return;
     targetElement.scrollIntoView({ behavior: "smooth" });
 });
