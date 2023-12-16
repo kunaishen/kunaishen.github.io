@@ -68,7 +68,7 @@ window.addEventListener("resize", () => {
 });
 
 let project_index = 0;
-const project_elements = ["dotfiles", "route-flow"];
+const project_elements = ["mp2a", "dotfiles", "route-flow"];
 const project_items = document.querySelector("#projects > .container > .items");
 
 document.querySelector("#projects > .container > .prev-btn").addEventListener("click", () => {
