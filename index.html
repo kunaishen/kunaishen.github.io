@@ -1,122 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-        <title>Aishen</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-        <link rel="stylesheet" href="style.css">
-        <script src="script.js" defer></script>
-    </head>
-    <body>
-        <div id="background"></div>
-        <div id="container"></div>
-        <div id="main">
-            <div id="intro">
-                <div class="pfp"><img src="images/pfp.png" class="rounded"/></div>
-                <div class="name">Heya there! I'm <span style="color: var(--color-violet);">Aishen</span>.</div>
-                <div class="desc">
-                    I'm just an ordinary</br>
-                    Filipino programmer.
-                </div>
-                <div class="nav">
-                    <a href="#about-me">about me</a>
-                    <a href="#technologies">technologies</a>
-                    <a href="#projects">projects</a>
-                </div>
-            </div>
-            <div id="about-me">
-                <h2>about me</h2>
-                <p>
-                My real name is <span style="color: var(--color-violet);">Aivan Ross</span>, but I prefer <span style="color: var(--color-violet);">Aishen</span> on the internet.
-                My favorite programming language is
-                <a target="_blank" href="https://en.wikipedia.org/wiki/C_(programming_language)" style="color: var(--color-blue)">C</a>, and I'm interested in low-level computing.
-                I embrace simplicity, as this website is created solely with
-                <a target="_blank" href="https://en.wikipedia.org/wiki/HTML" style="color: var(--color-red)">HTML</a>,
-                <a target="_blank" href="https://en.wikipedia.org/wiki/CSS" style="color: var(--color-blue)">CSS</a>, and
-                <a target="_blank" href="https://en.wikipedia.org/wiki/JavaScript" style="color: var(--color-orange)">JS</a>.
-                In my work, my preference extends to minimal technologies such as
-                <a target="_blank" href="https://archlinux.org/" style="color: var(--color-blue)">Arch Linux</a>,
-                <a target="_blank" href="https://neovim.io/" style="color: var(--color-green)">Neovim</a>, and other
-                <a target="_blank" href="https://en.wikipedia.org/wiki/Free_and_open-source_software" style="color: var(--color-orange)">FOSS</a>.
-                </p>
-                <figure>
-                    <img src="images/photo_of_me.jpg" alt="photo_of_me">
-                    <figcaption>this is how I look btw</figcaption>
-                </figure>
-                <p>
-                Currently, I am a Computer Science student at a university in Cavite.
-                Outside of code, I find enjoyment in activities such as cycling and basketball, and I also enjoy playing guitar.
-                When it comes to music, I predominantly listen to
-                <a target="_blank" href="https://en.wikipedia.org/wiki/J-pop">J-Pop</a> and
-                <a target="_blank" href="https://en.wikipedia.org/wiki/Future_bass#Kawaii_future_bass">Kawaii Future Bass</a> genres
-                (here is <a target="_blank" href="https://music.youtube.com/watch?v=VoqHxwksSgY">my favorite</a>).
-                I don't know what else to say but yeah, <a target="_blank" href="https://www.youtube.com/watch?v=9GiWa8UzLiQ">I freaking love programming</a>.
-                </p>
-            </div>
-            <div id="technologies">
-                <h2>technologies</h2>
-                <div class="desc">
-                    Here is a list of programming languages, frameworks, libraries,<br>
-                    tools, platforms and other software I am are proficient in.
-                </div>
-                <div class="container">
-                    <div class="item"><img src="images/c.png" alt=""><b>C</b></div>
-                    <div class="item"><img src="images/html.png" alt=""><b>HTML</b></div>
-                    <div class="item"><img src="images/css.png" alt=""><b>CSS</b></div>
-                    <div class="item"><img src="images/javascript.png" alt=""><b>Javascript</b></div>
-                    <div class="item"><img src="images/node.png" alt=""><b>Node JS</b></div>
-                    <div class="item"><img src="images/python.png" alt=""><b>Python</b></div>
-                    <div class="item"><img src="images/SDL.png" alt=""><b>SDL Library</b></div>
-                    <div class="item"><img src="images/pygame.png" alt=""><b>Pygame</b></div>
-                    <div class="item"><img src="images/GNU.png" alt=""><b>GNU Troff (ms)</b></div>
-                    <div class="item"><img src="images/arch.png" alt=""><b>Arch Linx</b></div>
-                    <div class="item"><img src="images/neovim.png" alt=""><b>Neovim</b></div>
-                    <div class="item"><img src="images/gimp.png" alt=""><b>GIMP</b></div>
-                </div>
-            </div>
-            <div id="projects">
-                <h2>projects</h2>
-                <div class="container">
-                    <button class="prev-btn"><</button>
-                    <div class="items">
-                        <div class="item" id="mp2a">
-                            <div class="preview"></div>
-                            <div class="context">
-                                <h3>mp2a</h3>
-                                <div>
-                                A Simple Video ASCII Player written in C. One of the random projects I made in C because I'm bored.
-                                </div>
-                                <a target="_blank" href="https://github.com/aishenreemo/mp2a">source</a>
-                            </div>
-                        </div>
-                        <div class="item" id="dotfiles">
-                            <div class="preview"></div>
-                            <div class="context">
-                                <h3>dotfiles</h3>
-                                <div>
-                                My computer configuration files on Arch Linux.
-                                Inspired by Janleigh's <a target="_blank" href="https://github.com/janleigh/dotfiles">dotfiles.</a>
-                                </div>
-                                <a target="_blank" href="https://github.com/aishenreemo/dots">source</a>
-                            </div>
-                        </div>
-                        <div class="item" id="route-flow">
-                            <div class="preview"></div>
-                            <div class="context">
-                                <h3>route flow</h3>
-                                <div>
-                                A random shitty traffic simulator made in pygame.
-                                It is made because of some research project in my highschool days.
-                                Currently not maintained but I think I'll work on this in the future.
-                                </div>
-                                <a target="_blank" href="https://github.com/aishenreemo/route_flow">source</a>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="next-btn">></button>
-                </div>
-            </div>
-        </div>
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/main.js"></script>
+  </body>
 </html>
